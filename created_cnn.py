@@ -28,25 +28,25 @@ def make_rand(net_list):
   return lis
 start_time = time.time()
 start_clock = time.clock()
-lr = 0.5005
+lr = 1.0097000038146973
 initW = 'None'
 opt = keras.optimizers.Adadelta(learning_rate=lr, rho=0.95)
-actF = 'relu'
-ks = 5
-depth = 3
+actF = 'tanh'
+ks = 7
+depth = 1
 fc_layer = 2
-drop_out = 0.07
-byp = 1
+drop_out = 0.3153851340833117
+byp = 3
 
 img_rows = 28
 img_cols = 28
-(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+(x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
 (x_train, x_test) = x_train[:30000], x_test[:1000]
 (y_train, y_test) = y_train[:30000], y_test[:1000]
 input_shape = (img_rows, img_cols, 1)
 batch_size = 128
 num_classes = 10
-epochs =20
+epochs =25
 
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
