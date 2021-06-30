@@ -126,7 +126,7 @@ def breed(selected_chromosome, popSize, breedSize, plist):
 
     return nextGeneration, plist
 
-generation = 70
+generation = 60
 popSize = 10
 mutateSize = 3
 selectSize = 3

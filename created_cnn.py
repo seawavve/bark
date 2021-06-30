@@ -28,15 +28,15 @@ def make_rand(net_list):
   return lis
 start_time = time.time()
 start_clock = time.clock()
-lr = 1.0097000038146973
+lr = 0.9698999876022338
 initW = 'None'
 opt = keras.optimizers.Adadelta(learning_rate=lr, rho=0.95)
-actF = 'tanh'
-ks = 7
-depth = 1
-fc_layer = 2
-drop_out = 0.3153851340833117
-byp = 3
+actF = 'relu'
+ks = 5
+depth = 3
+fc_layer = 1
+drop_out = 0.37
+byp = 2
 
 img_rows = 28
 img_cols = 28
@@ -46,7 +46,7 @@ img_cols = 28
 input_shape = (img_rows, img_cols, 1)
 batch_size = 128
 num_classes = 10
-epochs =25
+epochs =10
 
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
@@ -74,8 +74,6 @@ for _ in range(depth):
        net_list.append(c)
 output = layers.GlobalAveragePooling2D()(output)
 output = layers.Dense(1000, activation = actF, name='fc0')(output)
-dropout = layers.Dropout(rate=drop_out)(output)
-output = layers.Dense(1000, activation = actF, name='fc1')(dropout)
 dropout = layers.Dropout(rate=drop_out)(output)
 output = layers.Dense(10, activation = 'softmax', name='output')(dropout)
 
